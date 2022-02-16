@@ -1,0 +1,32 @@
+
+//input arr=[2,3,5,9,14,16,18]
+//input(target)       output
+    15                  14
+    4                   3
+    9                   9
+    
+//main concept see notes
+
+#include<bits/stdc++.h>
+using namespace std;
+int solve(int start,int end,vector<int>&nums,int target){
+	int mid=(start+end)/2;
+	if (start>end) return end;
+	if(nums[mid]==target) return mid;
+	else if(target>nums[mid]) return solve(mid+1,end,nums,target);
+	else return solve(start,mid-1,nums,target);
+}
+int main(){
+
+	#ifndef ONLINE_JUDGE
+	     freopen("input.txt", "r", stdin);
+   		 freopen("output.txt", "w", stdout);
+	#endif
+   ios::sync_with_stdio(0);
+   cin.tie(0);
+   vector<int>nums{2,3,5,9,14,16,18};
+   int x;
+   x=solve(0,nums.size(),nums,9); 
+   cout<<nums[x];
+   return 0;
+}
