@@ -1,0 +1,22 @@
+
+//input arr=[2,3,5,9,14,16,18]
+//input(target)       output
+    14                  14
+    15                  16
+    4                   5
+    9                   9
+    
+//main concept see notes
+class Solution {
+public:
+    int solve(int start,int end,vector<int>&nums,int target){
+        int mid=(start+end)/2;
+        if (start>end || start==nums.size()) return start; 
+        if (nums[mid]==target) return mid;
+        else if (target>nums[mid]) return solve(mid+1,end,nums,target);
+        else return solve(start,mid-1,nums,target);
+    }
+    int searchInsert(vector<int>& nums, int target) {
+        return solve(0,nums.size(),nums,target);
+    }
+};
