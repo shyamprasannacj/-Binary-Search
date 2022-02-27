@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int binarysearch(int start,int end,vector<int>&nums,int target,int &flag){
+        if (start>end)
+            return end;
+        int mid=(start+end)/2;
+        if (nums[mid]<=target) return binarysearch(mid+1,end,nums,target,flag);
+        else return binarysearch(start,mid-1,nums,target,flag);
+    }
+    
+    int binarysearch2(int start,int end,vector<int>&nums,int target,int &flag){
+        //cout<<start<<" "<<end<<endl;
+        if (start>end)
+            return start;
+        int mid=(start+end)/2;
+        if (nums[mid]==target) flag=1;
+        if (nums[mid]<target) return binarysearch2(mid+1,end,nums,target,flag);
+        else return binarysearch2(start,mid-1,nums,target,flag);
+    }
+    vector<int> searchRange(vector<int>& nums, int target) {
+         //cout<<binarysearch2(0,nums.size()-1,nums,target);
+         //return {};
+         int flag=0;
+         int i=binarysearch2(0,nums.size()-1,nums,target,flag);
+         if (flag==0) return {-1,-1};
+         int j=binarysearch(0,nums.size()-1,nums,target,flag);
+        return {i,j};
+    }
+};
+
