@@ -1,1 +1,4 @@
 You need to find the start and end index of the array
+increase the size of the chunck 2*n times ---until you fing the element that lies in that range ---Log(n)
+After finding it do binary search on that--log(size of that chunk)
+
